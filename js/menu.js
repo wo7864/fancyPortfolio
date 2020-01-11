@@ -890,8 +890,6 @@ var $jscomp$this = this;
     DOM.svg = document.querySelector('svg.scene');
     DOM.links = Array.from(document.querySelectorAll('.menu > .menu__item'));
     DOM.about = document.querySelector('.about-page');
-    DOM.shape = document.querySelector('svg.shape');
-	DOM.path = DOM.shape.querySelector('path');
 
     DOM.links.forEach((link, pos) => {
         link.style.pointerEvents = 'none';
