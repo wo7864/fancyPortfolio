@@ -265,7 +265,8 @@ a:focus,a:hover{
     .frame__title-wrap{
         grid-area:title;
         display:-ms-flexbox;
-        display:flex
+        display:flex;
+        width:200px;
     }
     .frame__title{
         margin:0
