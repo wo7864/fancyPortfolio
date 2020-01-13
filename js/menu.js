@@ -1607,6 +1607,7 @@ var $jscomp$this = this;
     DOM.links = Array.from(document.querySelectorAll('.menu > .menu__item'));
     DOM.about = document.querySelector('.about-page');
     DOM.text = Array.from(document.querySelectorAll('.about-page > .align-center'));
+    DOM.back = document.querySelector('.back');
     DOM.links.forEach((link, pos) => {
         link.style.pointerEvents = 'none';
         charming(link);
@@ -1629,7 +1630,7 @@ var $jscomp$this = this;
         });
     });
 
-    //DOM.ctrlBack.addEventListener('click', () => close());
+    DOM.back.addEventListener('click', () => close());
 
     let current;
     const open = (pos) => {
@@ -1679,7 +1680,8 @@ var $jscomp$this = this;
         if ( !this.isOpen ) return;
         this.isOpen = false;
         
-        const contentInner = DOM.contentInner[current];
+        //const contentInner = DOM.contentInner[current];
+        /*
         anime({
             targets: [contentInner.querySelectorAll('.content__title > span'), contentInner.querySelectorAll('.content__subtitle > span'), DOM.ctrlBack],
             delay: (t,i) => anime.random(0,300),
@@ -1690,6 +1692,53 @@ var $jscomp$this = this;
                 contentInner.style.opacity = 0;
                 DOM.content.style.pointerEvents = 'none';
             }
+        });*/
+
+        anime({
+			targets: DOM.about,
+			translateY: {
+				value: '-200vh', 
+				delay: 800,
+				duration: 1000,
+				easing: 'easeInOutQuad'
+			}
+        });
+
+        DOM.text.forEach((text, pos) => {
+            text.style.pointerEvents = 'none';
+            charming(text);    
+            anime({
+                targets: text.querySelectorAll('span'),
+                duration: 800,
+                delay: (t,i) => anime.random(0,600),
+                easing: 'easeInOutQuad',
+                opacity: [1,0],
+                complete: () => {
+                    text.style.pointerEvents = 'auto';
+                }
+            });
+        });
+
+        DOM.links.forEach((link, pos) => {
+            link.style.pointerEvents = 'none';
+            charming(link);
+
+            anime({
+                targets: link.querySelectorAll('span'),
+                duration: 800,
+                delay: (t,i) => anime.random(0,600)+1000,
+                easing: 'easeInOutQuad',
+                opacity: [0,1],
+                complete: () => {
+                    link.style.pointerEvents = 'auto';
+                    link.classList.add('menu__item--showDeco');
+                }
+            });
+
+            link.addEventListener('click', (ev) => {
+                ev.preventDefault();
+                open(pos);
+            });
         });
     };
 };
