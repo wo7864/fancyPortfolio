@@ -1605,9 +1605,9 @@ var $jscomp$this = this;
 
     DOM.svg = document.querySelector('svg.scene');
     DOM.links = Array.from(document.querySelectorAll('.menu > .menu__item'));
-    DOM.about = document.querySelector('.about-page');
-    DOM.text = Array.from(document.querySelectorAll('.about-page > .align-center'));
-    DOM.back = document.querySelector('.back');
+    DOM.about = document.querySelector('.page-1');
+    DOM.text = Array.from(document.querySelectorAll('.page-1__wrap > .page-1__item'));
+    const back_list = Array.from(document.querySelectorAll('.back-btn'));
     DOM.links.forEach((link, pos) => {
         link.style.pointerEvents = 'none';
         charming(link);
@@ -1629,8 +1629,9 @@ var $jscomp$this = this;
             open(pos);
         });
     });
-
-    DOM.back.addEventListener('click', () => close());
+    back_list.forEach((back, pos) => {
+        back.addEventListener('click', () => close());
+    });
 
     let current;
     const open = (pos) => {
@@ -1649,20 +1650,8 @@ var $jscomp$this = this;
             })
         });
 
-        // about 페이지가 내려오는 애니메이션
-        anime({
-			targets: DOM.about,
-			translateY: {
-				value: '200vh', 
-				delay: 100,
-				duration: 1000,
-				easing: 'easeInOutQuad'
-			}
-        });
-
         DOM.text.forEach((text, pos) => {
-            text.style.pointerEvents = 'none';
-            charming(text);    
+            charming(text);
             anime({
                 targets: text.querySelectorAll('span'),
                 duration: 800,
@@ -1694,15 +1683,6 @@ var $jscomp$this = this;
             }
         });*/
 
-        anime({
-			targets: DOM.about,
-			translateY: {
-				value: '-200vh', 
-				delay: 800,
-				duration: 1000,
-				easing: 'easeInOutQuad'
-			}
-        });
 
         DOM.text.forEach((text, pos) => {
             text.style.pointerEvents = 'none';

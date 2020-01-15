@@ -167,27 +167,59 @@ class ShapeOverlays {
   }
   
   (function() {
-    const elmHamburger = document.querySelector('.hamburger');
-    const gNavItems = document.querySelectorAll('.global-menu__item');
-    const elmOverlay = document.querySelector('.shape-overlays');
-    const overlay = new ShapeOverlays(elmOverlay);
+    const open_btn_list = Array.from(document.querySelectorAll('.page-open'));
+    const back_list = Array.from(document.querySelectorAll('.back-btn'));
+    const gNavItems = document.querySelectorAll('.page-1__item');
+    const overlay_list = [];
+
+    for(let i=1;i<=4;i++){
+      overlay_list.push(
+        new ShapeOverlays(document.querySelector('.page-'+ i +'-overlays'))
+      );
+    }
+    
+    
   
-    elmHamburger.addEventListener('click', () => {
-      if (overlay.isAnimating) {
-        return false;
-      }
-      overlay.toggle();
-      if (overlay.isOpened === true) {
-        elmHamburger.classList.add('is-opened-navi');
-        for (var i = 0; i < gNavItems.length; i++) {
-          gNavItems[i].classList.add('is-opened');
+    open_btn_list.forEach((btn, pos) => {
+      btn.addEventListener('click', () => {
+        back_list[pos].style.pointerEvents = 'auto';
+
+        if (overlay_list[pos].isAnimating) {
+          return false;
         }
-      } else {
-        elmHamburger.classList.remove('is-opened-navi');
-        for (var i = 0; i < gNavItems.length; i++) {
-          gNavItems[i].classList.remove('is-opened');
+        overlay_list[pos].toggle();
+        if (overlay_list[pos].isOpened === true) {
+          for (var i = 0; i < gNavItems.length; i++) {
+            gNavItems[i].classList.add('is-opened');
+          }
+        } else {
+          for (var i = 0; i < gNavItems.length; i++) {
+            gNavItems[i].classList.remove('is-opened');
+          }
         }
-      }
+      });
     });
+    
+    back_list.forEach((back, pos) => {
+      back.addEventListener('click', () => {
+        back_list[pos].style.pointerEvents = 'none';
+
+        if (overlay_list[pos].isAnimating) {
+          return false;
+        }
+        overlay_list[pos].toggle();
+        if (overlay_list[pos].isOpened === true) {
+          for (var i = 0; i < gNavItems.length; i++) {
+            gNavItems[i].classList.add('is-opened');
+          }
+        } else {
+          for (var i = 0; i < gNavItems.length; i++) {
+            gNavItems[i].classList.remove('is-opened');
+          }
+        }
+      });
+    });
+
+
   }());
   

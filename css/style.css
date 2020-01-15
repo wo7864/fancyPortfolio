@@ -76,12 +76,7 @@
 	position: relative;
 }
 
-.about-page{
-	position: absolute;
-	top:-200vh;
-	background-color:#e86c9a;
-	z-index:2000;
-}
+
 
 .align-center{
 	text-align:center;
@@ -104,14 +99,16 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-.back{
+.back-btn{
 	position: absolute;
-	width:60px;
-	height:40px;
 	top:5%;
 	left:90%;
+	pointer-events: none;
+	cursor: pointer;
+
 }
 
-.back:hover{
-	cursor: pointer;
+.back-img{
+	width:60px;
+	height:40px;
 }

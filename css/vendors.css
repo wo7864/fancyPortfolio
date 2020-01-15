@@ -308,9 +308,7 @@ a:focus,a:hover{
         padding:0;
         justify-self:end
     }
-    .frame a{
-        pointer-events:auto
-    }
+    
     .content{
         height:100vh;
         -ms-flex-pack:center;
