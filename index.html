@@ -9,10 +9,10 @@
 		<meta name="author" content="Codrops" />
 
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-		<link rel="shortcut icon" href="favicon.ico">
 		<link href="css/style.css" rel="stylesheet">
 		<link href="css/vendors.css" rel="stylesheet">
 		<link href="css/index.css" rel="stylesheet">
+		<link href="css/shapeOverlays.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class="content about-page">
@@ -30,22 +30,42 @@
 	</div>
 		<div class="background"></div>
 		<div class="overlay"></div>
-		<main>
+		<main class="main main--demo-3">
 			<div class="frame">
 				<div class="frame__title-wrap">
 					<h1 class="frame__title">Fancy Portfolio</h1>
 				</div>
-				<div class="content">
+				<div class="content content--demo-3">	
+
 					<nav class="menu">
-						<a href="#" class="menu__item">About</a>
+						<a href="#" class="menu__item hamburger hamburger--demo-3 js-hover">About</a>
 						<a href="#" class="menu__item">Skill</a>
 						<a href="#" class="menu__item">Experience</a>
 						<a href="#" class="menu__item">Project</a>
 					</nav>
+					<div class="global-menu">
+						<div class="global-menu__wrap">
+							<h2 class="global-menu__item global-menu__item--demo-3 align-center title">ABOUT</h2>
+							<p class="global-menu__item global-menu__item--demo-3 align-center no-margin noto-sans">개인정보</p>
+							<br/><br/><br/>
+							<p class="global-menu__item global-menu__item--demo-3 align-center no-margin">Name</p>
+							<p class="global-menu__item global-menu__item--demo-3 align-center sub-title noto-sans">조영재</p>
+							<p class="global-menu__item global-menu__item--demo-3 align-center no-margin">Old</p>
+							<p class="global-menu__item global-menu__item--demo-3 align-center sub-title noto-sans">96년생</p>
+							<p class="global-menu__item global-menu__item--demo-3 align-center no-margin">Education</p>
+							<p class="global-menu__item global-menu__item--demo-3 align-center sub-title noto-sans">부경대학교 컴퓨터공학과</p>
+							<img class="hamburger hamburger--demo-3 global-menu__item global-menu__item--demo-3 back" src="./static/images/noun_back.png" alt=""/>
+						</div>
+					</div>
+					<svg class="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
+						<path class="shape-overlays__path"></path>
+						<path class="shape-overlays__path"></path>
+						<path class="shape-overlays__path"></path>
+					</svg>
 				</div>
 				
 			</div>
-		</main>
+		</mainclass="main main--demo-3">
 
 
 	<script type="text/javascript" src="js/vendors.js"></script>
@@ -55,6 +75,7 @@
 	<script type="text/javascript" src="js/anime.min.js"></script>
 	<script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
 	<script type="text/javascript" src="js/wordFx.js"></script>
+	<script type="text/javascript" src="js/ShapeOverlays.js"></script>
 	
 	<script>
 		
