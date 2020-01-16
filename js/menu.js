@@ -1605,8 +1605,13 @@ var $jscomp$this = this;
 
     DOM.svg = document.querySelector('svg.scene');
     DOM.links = Array.from(document.querySelectorAll('.menu > .menu__item'));
-    DOM.about = document.querySelector('.page-1');
-    DOM.text = Array.from(document.querySelectorAll('.page-1__wrap > .page-1__item'));
+    const page_contents = []
+    for(let i=1; i<=4; i++){
+        target = Array.from(document.querySelectorAll('.page-'+ i +'__wrap > .page-'+ i +'__item'));
+        target = target.concat(Array.from(document.querySelectorAll('.page-'+ i +'__wrap > .page-'+ i +'__front-item')));
+        page_contents.push(target)
+    }
+
     const back_list = Array.from(document.querySelectorAll('.back-btn'));
     DOM.links.forEach((link, pos) => {
         link.style.pointerEvents = 'none';
@@ -1630,7 +1635,7 @@ var $jscomp$this = this;
         });
     });
     back_list.forEach((back, pos) => {
-        back.addEventListener('click', () => close());
+        back.addEventListener('click', () => close(pos));
     });
 
     let current;
@@ -1650,7 +1655,8 @@ var $jscomp$this = this;
             })
         });
 
-        DOM.text.forEach((text, pos) => {
+
+        page_contents[pos].forEach((text, pos2) => {
             charming(text);
             anime({
                 targets: text.querySelectorAll('span'),
@@ -1665,7 +1671,7 @@ var $jscomp$this = this;
         });
     };
 
-    const close = () => {
+    const close = (pos) => {
         if ( !this.isOpen ) return;
         this.isOpen = false;
         
@@ -1684,7 +1690,7 @@ var $jscomp$this = this;
         });*/
 
 
-        DOM.text.forEach((text, pos) => {
+        page_contents[pos].forEach((text, pos2) => {
             text.style.pointerEvents = 'none';
             charming(text);    
             anime({

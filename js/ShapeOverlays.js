@@ -169,7 +169,14 @@ class ShapeOverlays {
   (function() {
     const open_btn_list = Array.from(document.querySelectorAll('.page-open'));
     const back_list = Array.from(document.querySelectorAll('.back-btn'));
-    const gNavItems = document.querySelectorAll('.page-1__item');
+    const more = document.querySelector('.page-1-more');
+    const gNavItems = [];
+    for(let i=1; i<=4; i++){
+      target = Array.from(document.querySelectorAll('.page-'+ i +'__item'));
+      target = target.concat(Array.from(document.querySelectorAll('.page-'+ i +'__front-item')));
+
+      gNavItems.push(target);
+    }
     const overlay_list = [];
 
     for(let i=1;i<=4;i++){
@@ -183,20 +190,60 @@ class ShapeOverlays {
     open_btn_list.forEach((btn, pos) => {
       btn.addEventListener('click', () => {
         back_list[pos].style.pointerEvents = 'auto';
-
+        more.style.pointerEvents = 'pointer';
         if (overlay_list[pos].isAnimating) {
           return false;
         }
         overlay_list[pos].toggle();
         if (overlay_list[pos].isOpened === true) {
-          for (var i = 0; i < gNavItems.length; i++) {
-            gNavItems[i].classList.add('is-opened');
+          for (var i = 0; i < gNavItems[pos].length; i++) {
+            gNavItems[pos][i].classList.add('is-opened');
           }
         } else {
           for (var i = 0; i < gNavItems.length; i++) {
-            gNavItems[i].classList.remove('is-opened');
+            gNavItems[pos][i].classList.remove('is-opened');
           }
         }
+      });
+    });
+    more.addEventListener('click', () =>{
+
+      const front_contents = Array.from(document.querySelectorAll('.page-1__front-item'));
+      const back_contents = Array.from(document.querySelectorAll('.page-1__back-item'));
+
+      front_contents.forEach((text, pos) => {
+        charming(text);    
+        anime({
+            targets: text.querySelectorAll('span'),
+            duration: 800,
+            delay: (t,i) => anime.random(0,600),
+            easing: 'easeInOutQuad',
+            opacity: [1,0],
+            complete: () => {
+                text.style.pointerEvents = 'auto';
+                text.classList.remove('is-opened');
+                text.classList.add('is-invisiable');
+                back_contents.forEach((text2, pos2) => {
+                  text2.classList.remove('is-invisiable');
+                  text2.classList.add('is-opened');
+                });
+            }
+        });
+      });
+
+      back_contents.forEach((text, pos2) => {
+        charming(text);
+        anime({
+            targets: text.querySelectorAll('span'),
+            duration: 800,
+            delay: (t,i) => anime.random(0,600)+900,
+            easing: 'easeInOutQuad',
+            opacity: [0,1],
+            complete: () => {
+                text.style.pointerEvents = 'auto';
+
+            }
+        });
       });
     });
     
@@ -209,12 +256,12 @@ class ShapeOverlays {
         }
         overlay_list[pos].toggle();
         if (overlay_list[pos].isOpened === true) {
-          for (var i = 0; i < gNavItems.length; i++) {
-            gNavItems[i].classList.add('is-opened');
+          for (var i = 0; i < gNavItems[pos].length; i++) {
+            gNavItems[pos][i].classList.add('is-opened');
           }
         } else {
-          for (var i = 0; i < gNavItems.length; i++) {
-            gNavItems[i].classList.remove('is-opened');
+          for (var i = 0; i < gNavItems[pos].length; i++) {
+            gNavItems[pos][i].classList.remove('is-opened');
           }
         }
       });
