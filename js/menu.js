@@ -1609,6 +1609,7 @@ var $jscomp$this = this;
     for(let i=1; i<=4; i++){
         target = Array.from(document.querySelectorAll('.page-'+ i +'__wrap > .page-'+ i +'__item'));
         target = target.concat(Array.from(document.querySelectorAll('.page-'+ i +'__wrap > .page-'+ i +'__front-item')));
+        target = target.concat(Array.from(document.querySelectorAll('.page-'+ i +'__wrap > .page-'+ i +'__back-item')));
         page_contents.push(target)
     }
 

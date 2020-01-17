@@ -174,6 +174,7 @@ class ShapeOverlays {
     for(let i=1; i<=4; i++){
       target = Array.from(document.querySelectorAll('.page-'+ i +'__item'));
       target = target.concat(Array.from(document.querySelectorAll('.page-'+ i +'__front-item')));
+      target = target.concat(Array.from(document.querySelectorAll('.page-'+ i +'__back-item')));
 
       gNavItems.push(target);
     }
@@ -222,9 +223,13 @@ class ShapeOverlays {
             complete: () => {
                 text.style.pointerEvents = 'auto';
                 text.classList.remove('is-opened');
+                text.classList.remove('page-1__front-item');
+                text.classList.add('page-1__back-item');
                 text.classList.add('is-invisiable');
                 back_contents.forEach((text2, pos2) => {
                   text2.classList.remove('is-invisiable');
+                  text2.classList.remove('page-1__back-item');
+                  text2.classList.add('page-1__front-item');
                   text2.classList.add('is-opened');
                 });
             }
@@ -236,7 +241,7 @@ class ShapeOverlays {
         anime({
             targets: text.querySelectorAll('span'),
             duration: 800,
-            delay: (t,i) => anime.random(0,600)+900,
+            delay: (t,i) => anime.random(0,600)+1400,
             easing: 'easeInOutQuad',
             opacity: [0,1],
             complete: () => {
