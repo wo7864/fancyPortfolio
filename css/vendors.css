@@ -150,9 +150,10 @@ body{
     --color-link-hover:#ebd944;
     color:var(--color-text);
     background-color:var(--color-bg);
-    font-family:Futura,futura-pt,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale
+    -moz-osx-font-smoothing:grayscale;
+    font-family: 'Noto Sans KR', sans-serif;
+
 }
 a{
     display:inline-block;

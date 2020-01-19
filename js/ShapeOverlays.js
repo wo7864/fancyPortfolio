@@ -170,6 +170,10 @@ class ShapeOverlays {
     const open_btn_list = Array.from(document.querySelectorAll('.page-open'));
     const back_list = Array.from(document.querySelectorAll('.back-btn'));
     const more = document.querySelector('.page-1-more');
+    const page2_right = document.querySelector('.page-2-right');
+    const page2_left = document.querySelector('.page-2-left');
+    const page2_item_box = document.querySelector('.page-2__item-box');
+    let page2_subpage = 0;
     const gNavItems = [];
     for(let i=1; i<=4; i++){
       target = Array.from(document.querySelectorAll('.page-'+ i +'__item'));
@@ -235,7 +239,6 @@ class ShapeOverlays {
             }
         });
       });
-
       back_contents.forEach((text, pos2) => {
         charming(text);
         anime({
@@ -251,6 +254,33 @@ class ShapeOverlays {
         });
       });
     });
+    page2_right.addEventListener('click', () =>{
+      if(page2_subpage >= 3)
+        return;
+      page2_subpage++;
+      anime({
+        targets: page2_item_box,
+        duration: 200,
+        translateX:'-' + (page2_subpage * 100) + 'vw',
+        easing: 'easeInOutQuad',
+        complete: () => {
+        }
+      })
+    });
+    page2_left.addEventListener('click', () =>{
+      if(page2_subpage <= 0)
+        return;
+      page2_subpage--;
+      anime({
+        targets: page2_item_box,
+        duration: 200,
+        translateX:'-' + (page2_subpage * 100) + 'vw',
+        easing: 'easeInOutQuad',
+        complete: () => {
+        }
+      })
+    });
+
     
     back_list.forEach((back, pos) => {
       back.addEventListener('click', () => {

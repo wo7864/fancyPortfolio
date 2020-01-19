@@ -197,13 +197,13 @@
 	display: inline-block;
 	position: absolute;
 	top:60%;
-	left:23vw;
+	left:20vw;
 }
 .page-2-right{
 	display: inline-block;
 	position: absolute;
 	top:60%;
-	left:74vw;
+	left:77vw;
 }
 
 .sub-page{
@@ -236,6 +236,17 @@
 	opacity: 1;
 	pointer-events: auto;
 }
+.page-3-img{
+	width:23vw;
+	margin:0 8vw;
+}
+.page-3-img-box{
+	display: inline-block;
+}
+
+
+
+
 .page-4 {
 	width: 100vw;
 	height: 90vh;
