@@ -173,7 +173,12 @@ class ShapeOverlays {
     const page2_right = document.querySelector('.page-2-right');
     const page2_left = document.querySelector('.page-2-left');
     const page2_item_box = document.querySelector('.page-2__item-box');
+    const page3_down = document.querySelector('.page-3-down');
+    const page3_up = document.querySelector('.page-3-up');
+    const page3_item_box = document.querySelector('.page-3__item-box');
+    
     let page2_subpage = 0;
+    let page3_subpage = 0;
     const gNavItems = [];
     for(let i=1; i<=4; i++){
       target = Array.from(document.querySelectorAll('.page-'+ i +'__item'));
@@ -280,7 +285,41 @@ class ShapeOverlays {
         }
       })
     });
-
+    page3_down.addEventListener('click', () =>{
+      if(page3_subpage >= 1)
+        return;
+      page3_subpage++;
+      anime({
+        targets: page3_item_box,
+        duration: 300,
+        translateY: '-' + (page3_subpage * 100) + 'vh',
+        easing: 'easeInOutCirc',
+        complete: () => {
+        }
+      });
+      anime({
+        targets: document.querySelector('page-3-up'),
+        duration:50,
+        opacity: 0,
+        easing: 'easeInOutQuad',
+        complete: () => {
+          console.log('succese');
+        }
+      });
+    });
+    page3_up.addEventListener('click', () =>{
+      if(page3_subpage <= 0)
+        return;
+      page3_subpage--;
+      anime({
+        targets: page3_item_box,
+        duration: 300,
+        translateY: '-' + (page3_subpage * 100) + 'vh',
+        easing: 'easeInOutCirc',
+        complete: () => {
+        }
+      })
+    });
     
     back_list.forEach((back, pos) => {
       back.addEventListener('click', () => {
