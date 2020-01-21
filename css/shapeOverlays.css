@@ -196,14 +196,14 @@
 .page-2-left{
 	display: inline-block;
 	position: absolute;
-	top:60%;
-	left:20vw;
+	top:63vh;
+	left:17vw;
 }
 .page-2-right{
 	display: inline-block;
 	position: absolute;
-	top:60%;
-	left:77vw;
+	top:63vh;
+	left:80vw;
 }
 
 .sub-page{

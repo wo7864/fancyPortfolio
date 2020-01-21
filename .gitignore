@@ -1,1 +1,6 @@
 static/
+public/
+
+.firebaserc
+firebase.json
+.firebase*

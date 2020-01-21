@@ -169,7 +169,7 @@ class ShapeOverlays {
   (function() {
     const open_btn_list = Array.from(document.querySelectorAll('.page-open'));
     const back_list = Array.from(document.querySelectorAll('.back-btn'));
-    const more = document.querySelector('.page-1-more');
+    const page1_more = document.querySelector('.page-1-more');
     const page2_right = document.querySelector('.page-2-right');
     const page2_left = document.querySelector('.page-2-left');
     const page2_item_box = document.querySelector('.page-2__item-box');
@@ -200,7 +200,15 @@ class ShapeOverlays {
     open_btn_list.forEach((btn, pos) => {
       btn.addEventListener('click', () => {
         back_list[pos].style.pointerEvents = 'auto';
-        more.style.pointerEvents = 'pointer';
+        if(pos==0){
+          page1_more.style.cursor = 'pointer';
+        }else if(pos==1){
+          page2_right.style.cursor = 'pointer';
+          page2_left.style.cursor = 'pointer';
+        }else if(pos==2){
+          page3_down.style.cursor = 'pointer';
+          page3_up.style.cursor = 'pointer';
+        }
         if (overlay_list[pos].isAnimating) {
           return false;
         }
@@ -216,7 +224,7 @@ class ShapeOverlays {
         }
       });
     });
-    more.addEventListener('click', () =>{
+    page1_more.addEventListener('click', () =>{
 
       const front_contents = Array.from(document.querySelectorAll('.page-1__front-item'));
       const back_contents = Array.from(document.querySelectorAll('.page-1__back-item'));
@@ -225,7 +233,7 @@ class ShapeOverlays {
         charming(text);    
         anime({
             targets: text.querySelectorAll('span'),
-            duration: 800,
+            duration: 600,
             delay: (t,i) => anime.random(0,600),
             easing: 'easeInOutQuad',
             opacity: [1,0],
@@ -249,7 +257,7 @@ class ShapeOverlays {
         anime({
             targets: text.querySelectorAll('span'),
             duration: 800,
-            delay: (t,i) => anime.random(0,600)+1400,
+            delay: (t,i) => anime.random(0,600)+800,
             easing: 'easeInOutQuad',
             opacity: [0,1],
             complete: () => {
